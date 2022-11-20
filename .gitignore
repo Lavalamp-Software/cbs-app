@@ -1,5 +1,4 @@
 # compiled output
-/dist
 # Logs
 logs
 *.log
@@ -37,6 +36,7 @@ lerna-debug.log*
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+dist
 node_modules
 /.pnp
 .pnp.js
@@ -49,7 +49,7 @@ node_modules
 /out/
 
 # production
-/build
+build
 
 # misc
 .DS_Store
