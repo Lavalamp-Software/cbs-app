@@ -11,7 +11,7 @@ const PkgPage : NextPage = () => {
             <title>{pkg}</title>
         </Head>
         <main>
-            <h1>{pkg}</h1>
+            
         </main>
         </>
     )

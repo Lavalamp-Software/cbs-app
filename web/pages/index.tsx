@@ -15,23 +15,25 @@ const Home : NextPage = () => {
         "color": "rgb(1,86,250)"
       }}>CBS</span> - a C/C++ Build System inspired by pypi, npm, and cargo</h1>
       <div style={{
-        "backgroundColor": "rgba(10,10,10,0.5)",
-        "width": "100%",
-        "height": "10rem"
+        "whiteSpace": "pre",
+        "paddingLeft": "5rem",
+        "padding": "1rem",
+        "tabSize": "4",
+        "backgroundColor": "rgb(26, 26, 26)",
+        "color": "rgb(217, 217, 217)",
+        "fontFamily": "'Jetbrains Mono', monospace"
       }}>
-        <pre>
           {
-            `
-            #include <cbs/mypackage>
+            
+            `#include <cbs/mypackage>` +
 
-            int main() {
-              MyPackageClass::println("hello, this is working!");
-              return 0;
+            `int main() { \n` +
+              `\tMyPackageClass::println("hello, this is working!"); \n` +
+              `\treturn 0; \n` +
+              `}`
             }
-            `
-          }
-        </pre>
-      </div>
+            
+        </div>
     </main>
     </>
   )

@@ -1,22 +1,27 @@
 import Link from "next/link"
 import React from "react"
 
-const NavComponent : React.FC = () => {
+export interface NavComponentProps {
+    children : string,
+    route : string
+}
+
+const NavComponent : React.FC<NavComponentProps> = ({children, route}) => {
     return (
         <div style={{
+            "height": "100%",
         }}> 
-            <Link href={""} style={{
-                "backgroundColor": "none",
-                "color": "rgb(71, 170, 240)",
-            }}>
+            <Link href={route}>
                 <button style={{
+                    "flexDirection": "row",
                     "WebkitAppearance": "none",
                     "border": "none",
                     "backgroundColor": "rgba(1,1,1,0.3)",
+                    "width": "10rem",
                     "height": "100%",
-                    "width": "100%"
+                    "fontSize": "2em"
                 }}>
-                    ss
+                    {children}
                 </button>
             </Link>
         </div>

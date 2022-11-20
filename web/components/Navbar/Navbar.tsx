@@ -7,9 +7,11 @@ const Navbar : React.FC = () => {
     return (
         <nav style={{
             "backgroundColor": "rgba(10,10,10,0.2)",
-            "height": "5rem"
+            "height": "5rem",
+            "display": "flex"
         }}>
-            <NavComponent/>
+            <NavComponent route="/">Home</NavComponent>
+            <NavComponent route="/">Lol</NavComponent>
         </nav>
     )
 }
