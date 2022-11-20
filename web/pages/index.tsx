@@ -1,23 +1,24 @@
 import { NextPage } from "next";
 import { Head } from "next/document";
+import { Navbar } from "../components/Navbar";
 
 const Home : NextPage = () => {
   return (
     <>
     <main>
+      <Navbar></Navbar>
       <h1 style={{
         "textAlign": "center",
         "fontSize": "2.5em",
         "padding": "2rem"
-      }}>Build without Pain - that is what we have thought about when creating <span style={{
+      }}><span style={{
         "color": "rgb(1,86,250)"
-      }}>CBS</span>.</h1>
+      }}>CBS</span> - a C/C++ Build System inspired by pypi, npm, and cargo</h1>
       <div style={{
         "backgroundColor": "rgba(10,10,10,0.5)",
         "width": "100%",
         "height": "10rem"
       }}>
-        <p>
         <pre>
           {
             `
@@ -30,7 +31,6 @@ const Home : NextPage = () => {
             `
           }
         </pre>
-        </p>
       </div>
     </main>
     </>
