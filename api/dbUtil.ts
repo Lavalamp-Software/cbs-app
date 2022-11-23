@@ -1,6 +1,7 @@
+import { HttpStatus } from "@nestjs/common";
 import { JsonDB, Config } from "node-json-db";
+import * as semver from "semver";
 
-export type stringMap = {[key : string]: string}
 
 export interface User {
     username : string,
@@ -10,27 +11,35 @@ export interface User {
     packages : Package[]
 }
 
+export type stringMap<extraTypes> = {[key : string]: string | extraTypes}
+
 export interface Package {
     name : string,
     description : string,
+    version: string,
     author: string,
-    source: {[key : string]: string | string[] | stringMap}
+    source: stringMap<string | string[]>
 }
 
 export class PackageClient extends JsonDB {
     constructor() {
-        const config = new Config("./db/packages", true, true, ".")
+        const config = new Config("./db/packages", true, true, ":")
         super(config)
-        this.push(".packages", {})
     }
 
-    async uploadNew(obj : Package) {
-        await this.push(`.packages.${obj.name}`, {
-            name: obj.name,
-            description: obj.description,
-            author: obj.author
-        } as Package)
-        await this.save()
+    // Do only in production
+    async empty() {
+        await this.push(":packages", {})
+    }
+
+    async uploadNew(obj : Package) : Promise<HttpStatus> {
+        if (semver.valid(obj.version)) {
+            await this.push(`:packages:${obj.name}:${obj.version}`, obj)
+            await this.save()
+            return HttpStatus.OK
+        } else {
+            return HttpStatus.BAD_REQUEST
+        }
     }
 }
 

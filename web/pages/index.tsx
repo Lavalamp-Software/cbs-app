@@ -1,8 +1,11 @@
 import { NextPage } from "next";
 import { Head } from "next/document";
+import Link from "next/link";
+import { useState } from "react";
 import { Navbar } from "../components/Navbar";
 
 const Home : NextPage = () => {
+  const [searchQuery, setSearchQuery] = useState("")
   return (
     <>
     <main>
@@ -33,6 +36,39 @@ const Home : NextPage = () => {
               `}`
             }
             
+        </div>
+
+        <div style={{
+          "display": "flex",
+          "flexDirection": "row"
+        }}>
+          <input type={"text"} style={{
+            "WebkitAppearance": "none",
+            "border": "none",
+            "width": "80%",
+            "fontSize": "1.5em",
+            "height": "2rem",
+            "transitionDuration": "250ms",
+            "backgroundColor": "rgb(20,20,20)",
+            "fontFamily": "'Jetbrains Mono', monospace"
+          }}
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value.replaceAll(" ", "-"))
+          }}
+          >
+          </input>
+            <button style={{
+              "WebkitAppearance": "none",
+              "border": "none",
+              "height": "2rem",
+              "width": "20%",
+              "fontSize": "1.5em",
+              "backgroundColor": "rgb(50,50,50)"
+            }}
+            >
+              <Link href={`/packages/${searchQuery}`}>Search</Link>
+            </button>
         </div>
     </main>
     </>

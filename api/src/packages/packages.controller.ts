@@ -5,9 +5,9 @@ import { PackagesService } from './packages.service';
 export class PackagesController {
     constructor(private readonly service : PackagesService) {}
 
-    @Get(":packagename")
-    async getPackage(@Param("packagename") packagename : string) : Promise<string> {
-        return await this.service.getPackage(packagename)
+    @Get(":packagename/:version")
+    async getPackage(@Param("packagename") packagename : string, @Param("version") version : string) : Promise<string | HttpStatus> {
+        return await this.service.getPackage(packagename, version)
     }
     @Post()
     async uploadPackage(@Body() body) : Promise<HttpStatus> {

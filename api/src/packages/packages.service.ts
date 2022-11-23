@@ -3,14 +3,28 @@ import { dbSession, Package, PackageClient } from 'dbUtil';
 
 @Injectable()
 export class PackagesService {
-    async getPackage(packagename : string) : Promise<string> {
-        console.log(packagename)
-        let pkg : Promise<any>
+
+    async getNewestPackage(packagename : string) {
         try {
-            pkg = await dbSession.getData(`.packages.${packagename}`)
+            let versionPkgs = await dbSession.getData(`;packages;${packagename}`)
+            console.log(versionPkgs)
+            console.log(Object.keys(versionPkgs))
+            
         } catch (err) {
             console.log(err)
             return ""
+        }
+    }
+
+    async getPackage(packagename : string, version : string) : Promise<string | HttpStatus> {
+        console.log(packagename)
+        console.log(version)
+        let pkg : Package
+        try {
+            pkg = await dbSession.getData(`:packages:${packagename}:${version}`) as Package
+        } catch (err) {
+            console.log(err)
+            return HttpStatus.NOT_FOUND
         }
         console.log(pkg)
         return JSON.parse(
@@ -20,7 +34,6 @@ export class PackagesService {
         )
     }
     async uploadPackage(obj : Package) : Promise<HttpStatus> {
-        dbSession.push(`.packages.${obj.name}`, obj)
-        return HttpStatus.OK
+        return await dbSession.uploadNew(obj)
     }
 }

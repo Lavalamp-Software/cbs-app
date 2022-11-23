@@ -1,3 +1,55 @@
 {
-    "packages": {}
+    "packages": {
+        "interpackage2": {
+            "1.2.1": {
+                "author": "intervinn",
+                "description": "an inter package2",
+                "name": "interpackage2",
+                "source": {
+                    "s": "sd"
+                },
+                "version": "1.2.1"
+            },
+            "1.0.1": {
+                "author": "intervinn",
+                "description": "an inter package2",
+                "name": "interpackage2",
+                "source": {
+                    "s": "sd"
+                },
+                "version": "1.0.1"
+            },
+            "2.0.1": {
+                "author": "intervinn",
+                "description": "an inter package2",
+                "name": "interpackage2",
+                "source": {
+                    "s": "sd"
+                },
+                "version": "2.0.1"
+            }
+        },
+        "interpackage": {
+            "1.0.0": {
+                "author": "intervinn",
+                "description": "an inter package2",
+                "name": "interpackage",
+                "source": {
+                    "s": "sd"
+                },
+                "version": "1.0.0"
+            }
+        },
+        "interpackage3": {
+            "3.0.0": {
+                "name": "interpackage3",
+                "description": "an inter package 3",
+                "author": "intervinn",
+                "version": "3.0.0",
+                "source": {
+                    "module.hpp": "int main(){}"
+                }
+            }
+        }
+    }
 }

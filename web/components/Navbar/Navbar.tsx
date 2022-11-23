@@ -11,7 +11,7 @@ const Navbar : React.FC = () => {
             "display": "flex"
         }}>
             <NavComponent route="/">Home</NavComponent>
-            <NavComponent route="/">Lol</NavComponent>
+            <NavComponent route="/packages/lol">Lol</NavComponent>
         </nav>
     )
 }
