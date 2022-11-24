@@ -9,6 +9,12 @@ export class PackagesController {
     async getPackage(@Param("packagename") packagename : string, @Param("version") version : string) : Promise<string | HttpStatus> {
         return await this.service.getPackage(packagename, version)
     }
+
+    @Get()
+    async getAllPackages() {
+        return await this.service.getAllPackages()
+    }
+
     @Post()
     async uploadPackage(@Body() body) : Promise<HttpStatus> {
         return await this.service.uploadPackage(body)

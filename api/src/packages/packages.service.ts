@@ -1,11 +1,12 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { dbSession, Package, PackageClient } from 'dbUtil';
+import { PackageClient } from 'src/db';
+import { PackageType } from 'src/types';
 
 @Injectable()
 export class PackagesService {
 
     async getNewestPackage(packagename : string) {
-        try {
+        /*try {
             let versionPkgs = await dbSession.getData(`;packages;${packagename}`)
             console.log(versionPkgs)
             console.log(Object.keys(versionPkgs))
@@ -13,10 +14,18 @@ export class PackagesService {
         } catch (err) {
             console.log(err)
             return ""
-        }
+        }*/
+    }
+
+    async getAllPackages() {
+
     }
 
     async getPackage(packagename : string, version : string) : Promise<string | HttpStatus> {
+        const db = new PackageClient()
+        const pkg = await db.collection.findOne({name: packagename, version: version})
+        
+        /*
         console.log(packagename)
         console.log(version)
         let pkg : Package
@@ -32,8 +41,13 @@ export class PackagesService {
                 pkg
             )
         )
+        */
+       return ""
     }
-    async uploadPackage(obj : Package) : Promise<HttpStatus> {
-        return await dbSession.uploadNew(obj)
+    async uploadPackage(obj : PackageType) : Promise<HttpStatus> {
+        //return await dbSession.uploadNew(obj)
+        const db = new PackageClient()
+        return await db.insertPackage(obj)
+        
     }
 }

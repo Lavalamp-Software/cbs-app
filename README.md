@@ -4,7 +4,7 @@
 ---
 # Dependencies
 Without these packages, cbs-app would not exist.
-* <a href="https://www.npmjs.com/package/node-json-db">node-json-db</a>
+* ~~<a href="https://www.npmjs.com/package/node-json-db">node-json-db</a>~~
 * <a href="https://nestjs.com">NestJS</a>
 * <a href="https://nextjs.org">NextJS</a>
 * <a href="https://typescriptlang.org">TypeScript Programming Language</a>
